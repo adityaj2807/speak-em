@@ -1,0 +1,32 @@
+window.DECKS = window.DECKS || {};
+window.DECKS["zh"] = window.DECKS["zh"] || {};
+window.DECKS["zh"]["introductions"] = [
+  { "d":1, "prompt":"Say hello.", "answers":["Nǐ hǎo!", "Nín hǎo!", "Hāi!"] },
+  { "d":1, "prompt":"Say good morning.", "answers":["Zǎo shàng hǎo!", "Zǎo!", "Nǐ zǎo!"] },
+  { "d":1, "prompt":"Say good evening.", "answers":["Wǎn shàng hǎo!", "Wǎn ān!", "Nǐ hǎo!"] },
+  { "d":1, "prompt":"Say thank you.", "answers":["Xièxiè!", "Xièxiè nín!", "Duō xiè!"] },
+  { "d":1, "prompt":"Say sorry / excuse me.", "answers":["Duìbuqǐ", "Bùhǎoyìsi", "Láojià"] },
+  { "d":1, "prompt":"Say yes.", "answers":["Shì", "Duì", "Hǎo"] },
+  { "d":1, "prompt":"Say no.", "answers":["Bù", "Bú shì", "Méiyǒu"] },
+  { "d":1, "prompt":"Say please.", "answers":["Qǐng", "Máfan nǐ", "Láojià"] },
+  { "d":1, "prompt":"Introduce your name.", "answers":["Wǒ jiào [your name]", "Wǒ de míngzi shì [your name]", "[Your name]"] },
+  { "d":1, "prompt":"Say 'nice to meet you.'", "answers":["Hěn gāoxìng rènshí nǐ", "Xìnghui xìnghui", "Jiǔyǎng jiǔyǎng"] },
+  { "d":1, "prompt":"Say goodbye.", "answers":["Zàijiàn!", "Bàibài!", "Huítóu jiàn!"] },
+  { "d":1, "prompt":"Say 'see you later.'", "answers":["Huítóu jiàn", "Yīhuìr jiàn", "Dài huǐr jiàn"] },
+  { "d":2, "prompt":"Ask 'how are you?'", "answers":["Nǐ hǎo ma?", "Zuì jìn zěnme yàng?", "Nǐ zěnme yàng?"] },
+  { "d":2, "prompt":"Respond: 'I'm fine, thank you.'", "answers":["Hěn hǎo, xièxiè", "Wǒ hěn hǎo, xièxiè", "Hái bùcuò, xièxiè"] },
+  { "d":2, "prompt":"Say 'I don't understand.'", "answers":["Wǒ tīng bù dǒng", "Wǒ bù míngbái", "Méi tīng qīngchǔ"] },
+  { "d":2, "prompt":"Ask 'do you speak English?'", "answers":["Nǐ huì shuō Yīngyǔ ma?", "Nǐ shuō Yīngwén ma?", "Yīngyǔ kěyǐ ma?"] },
+  { "d":2, "prompt":"Say 'I speak a little [language].'", "answers":["Wǒ huì yīdiǎnr", "Yīdiǎn diǎn", "Hái zài xué"] },
+  { "d":2, "prompt":"Say where you're from.", "answers":["Wǒ lái zì [your country]", "Wǒ shì [your country] rén", "Wǒ cóng [your country] lái"] },
+  { "d":2, "prompt":"Ask someone's name.", "answers":["Nǐ jiào shénme míngzi?", "Nín guìxìng?", "Nǐ jiào shénme?"] },
+  { "d":2, "prompt":"Ask 'where are you from?'", "answers":["Nǐ shì nǎlǐ rén?", "Nǐ cóng nǎlǐ lái?", "Nín guìjí shì nǎ?"] },
+  { "d":2, "prompt":"Say you live in [your city].", "answers":["Wǒ zhù zài [your city]", "Wǒ zài [your city]", "Wǒ jiā zài [your city]"] },
+  { "d":3, "prompt":"Say 'can you speak more slowly, please?'", "answers":["Qǐng shuō màn yīdiǎn", "Màn yīdiǎn shuō", "Néng màn diǎnr shuō ma?"] },
+  { "d":3, "prompt":"Say 'I'm still learning [language].'", "answers":["Wǒ hái zài xué", "Wǒ hái zài xuéxí", "Hái zài xué ne"] },
+  { "d":3, "prompt":"Say 'I understand a little but speaking is still hard.'", "answers":["Tīng dǒng yīdiǎn dànshì shuō hái hěn nán", "Néng tīng dǒng yīxiē dàn shuō qǐlái hái hěn nán", "Lǐjiě yīdiǎn shuō qǐlái hái hěn nán"] },
+  { "d":3, "prompt":"Ask what someone does for work.", "answers":["Nǐ shì zuò shénme gōngzuò de?", "Nǐ zuò shénme de?", "Nǐ de gōngzuò shì?"] },
+  { "d":3, "prompt":"Say what you do for work.", "answers":["Wǒ shì [job]", "Wǒ zuò [job]", "Wǒ de gōngzuò shì [job]"] },
+  { "d":4, "prompt":"Say you've been trying to learn the language for a few months.", "answers":["Wǒ xué le jǐ gè yuè le", "Xué le jǐ gè yuè le", "Yǐjīng xué le jǐ gè yuè"] },
+  { "d":4, "prompt":"Compliment someone's language skills and ask how they learned.", "answers":["Nǐ shuō de hǎo bàng! Zěnme xuéde?", "Nǐ shuō de zhēn hǎo! Shì zěnme xuéde?", "Nǐ zhème liúlì zěnme xué de?"] }
+];

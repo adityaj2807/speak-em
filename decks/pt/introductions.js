@@ -1,0 +1,32 @@
+window.DECKS = window.DECKS || {};
+window.DECKS["pt"] = window.DECKS["pt"] || {};
+window.DECKS["pt"]["introductions"] = [
+  { "d":1, "prompt":"Say hello.", "answers":["Olá!", "Oi!", "Bom dia!"] },
+  { "d":1, "prompt":"Say good morning.", "answers":["Bom dia!", "Boa manhã!", "Olá, bom dia!"] },
+  { "d":1, "prompt":"Say good evening.", "answers":["Boa noite!", "Boa tarde!", "Olá!"] },
+  { "d":1, "prompt":"Say thank you.", "answers":["Obrigado/a!", "Muito obrigado/a!", "Valeu!"] },
+  { "d":1, "prompt":"Say sorry / excuse me.", "answers":["Desculpe", "Com licença", "Perdão"] },
+  { "d":1, "prompt":"Say yes.", "answers":["Sim", "Claro", "Com certeza"] },
+  { "d":1, "prompt":"Say no.", "answers":["Não", "Não, obrigado/a", "Não mesmo"] },
+  { "d":1, "prompt":"Say please.", "answers":["Por favor", "Faz favor", "Se faz favor"] },
+  { "d":1, "prompt":"Introduce your name.", "answers":["Meu nome é [your name]", "Me chamo [your name]", "Sou [your name]"] },
+  { "d":1, "prompt":"Say 'nice to meet you.'", "answers":["Prazer em conhecer", "Muito prazer", "É um prazer"] },
+  { "d":1, "prompt":"Say goodbye.", "answers":["Tchau!", "Até logo", "Xau!"] },
+  { "d":1, "prompt":"Say 'see you later.'", "answers":["Até mais", "Até logo", "A gente se vê"] },
+  { "d":2, "prompt":"Ask 'how are you?'", "answers":["Como você está?", "Tudo bem?", "Como vai?"] },
+  { "d":2, "prompt":"Respond: 'I'm fine, thank you.'", "answers":["Bem, obrigado/a", "Tudo bem, obrigado/a", "Estou bem, valeu"] },
+  { "d":2, "prompt":"Say 'I don't understand.'", "answers":["Não entendo", "Não compreendo", "Não estou entendendo"] },
+  { "d":2, "prompt":"Ask 'do you speak English?'", "answers":["Você fala inglês?", "Fala inglês?", "Sabe inglês?"] },
+  { "d":2, "prompt":"Say 'I speak a little [language].'", "answers":["Falo um pouco", "Só um pouquinho", "[Language] um pouco"] },
+  { "d":2, "prompt":"Say where you're from.", "answers":["Sou de [your country]", "Venho de [your country]", "Sou [nationality]"] },
+  { "d":2, "prompt":"Ask someone's name.", "answers":["Como você se chama?", "Qual é o seu nome?", "Como é o seu nome?"] },
+  { "d":2, "prompt":"Ask 'where are you from?'", "answers":["De onde você é?", "De onde você vem?", "Você é de onde?"] },
+  { "d":2, "prompt":"Say you live in [your city].", "answers":["Moro em [your city]", "Estou em [your city]", "Vivo em [your city]"] },
+  { "d":3, "prompt":"Say 'can you speak more slowly, please?'", "answers":["Pode falar mais devagar?", "Mais devagar, por favor", "Fala mais lento, por favor"] },
+  { "d":3, "prompt":"Say 'I'm still learning [language].'", "answers":["Ainda estou aprendendo", "Ainda estou estudando", "Estou aprendendo ainda"] },
+  { "d":3, "prompt":"Say 'I understand a little but speaking is still hard.'", "answers":["Entendo um pouco mas falar ainda é difícil", "Consigo entender mas ainda não falo bem", "Entendo mas falar é complicado"] },
+  { "d":3, "prompt":"Ask what someone does for work.", "answers":["O que você faz?", "Com o que trabalha?", "Qual é a sua profissão?"] },
+  { "d":3, "prompt":"Say what you do for work.", "answers":["Sou [job]", "Trabalho como [job]", "Faço [job]"] },
+  { "d":4, "prompt":"Say you've been trying to learn the language for a few months.", "answers":["Faz alguns meses que estou aprendendo", "Estudo há alguns meses", "Comecei faz alguns meses"] },
+  { "d":4, "prompt":"Compliment someone's language skills and ask how they learned.", "answers":["Você fala muito bem! Como aprendeu?", "Seu [language] é ótimo! Onde aprendeu?", "Como você aprendeu tão bem?"] }
+];

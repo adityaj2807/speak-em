@@ -1,0 +1,32 @@
+window.DECKS = window.DECKS || {};
+window.DECKS["ko"] = window.DECKS["ko"] || {};
+window.DECKS["ko"]["introductions"] = [
+  { "d":1, "prompt":"Say hello.", "answers":["Annyeonghaseyo!", "Annyeong!", "Yeoboseyo!"] },
+  { "d":1, "prompt":"Say good morning.", "answers":["Joheun achim-ieyo!", "Annyeonghaseyo!", "Annyeong!"] },
+  { "d":1, "prompt":"Say good evening.", "answers":["Annyeonghaseyo!", "Joheun jeonyeok-ieyo!", "Annyeong!"] },
+  { "d":1, "prompt":"Say thank you.", "answers":["Gamsahamnida!", "Gomawo!", "Gamsawo!"] },
+  { "d":1, "prompt":"Say sorry / excuse me.", "answers":["Joesonghamnida", "Mianhaeyo", "Sillyehamnida"] },
+  { "d":1, "prompt":"Say yes.", "answers":["Ne", "Ye", "Nae"] },
+  { "d":1, "prompt":"Say no.", "answers":["Aniyo", "Aniyeyo", "Anio"] },
+  { "d":1, "prompt":"Say please.", "answers":["Butakamnida", "Juseyo", "Onegahaeyo"] },
+  { "d":1, "prompt":"Introduce your name.", "answers":["Je ireum-eun [your name]-ieyo", "[Your name]-ieyo", "[Your name]-imnida"] },
+  { "d":1, "prompt":"Say 'nice to meet you.'", "answers":["Mannaseo bangawoyo", "Bangawoyo!", "Mannaseo ban-gawoyo"] },
+  { "d":1, "prompt":"Say goodbye.", "answers":["Annyeonghi gaseyo", "Annyeong!", "Tto bwayo!"] },
+  { "d":1, "prompt":"Say 'see you later.'", "answers":["Tto bwayo!", "Naeil bwayo!", "Issda-ga bwayo"] },
+  { "d":2, "prompt":"Ask 'how are you?'", "answers":["Eotteoseyo?", "Jal jinaeseyo?", "Annyeonghaseyo?"] },
+  { "d":2, "prompt":"Respond: 'I'm fine, thank you.'", "answers":["Jal jinaeyo, gamsahamnida", "Gwaenchanayo, gamsahamnida", "Ne, jal jinaeyo"] },
+  { "d":2, "prompt":"Say 'I don't understand.'", "answers":["Moreugeisseoyo", "Ihae ga an doeyo", "Mueun maryieyo?"] },
+  { "d":2, "prompt":"Ask 'do you speak English?'", "answers":["Yeong-eo haseyo?", "Yeong-eo gwaenchanayo?", "Yeong-eo hal su isseoyo?"] },
+  { "d":2, "prompt":"Say 'I speak a little [language].'", "answers":["Hangugeo jogeumyo", "Hangugeo jogeumman haeyo", "Ajik bujok haeyo"] },
+  { "d":2, "prompt":"Say where you're from.", "answers":["[Your country]-eseo wasseoyo", "[Your country] saram-ieyo", "[Your country]-in-ieyo"] },
+  { "d":2, "prompt":"Ask someone's name.", "answers":["Ireum-i mwoyeyo?", "Seongham-i eotteoke doeseyo?", "Ireum-i mwoyeyo?"] },
+  { "d":2, "prompt":"Ask 'where are you from?'", "answers":["Eodiseo o-syeo-sseoyo?", "Eo-neu nara-yeyo?", "Gohyang-i eodi-yeyo?"] },
+  { "d":2, "prompt":"Say you live in [your city].", "answers":["[Your city]-e salayo", "[Your city]-e sal-go isseoyo", "[Your city] saram-ieyo"] },
+  { "d":3, "prompt":"Say 'can you speak more slowly, please?'", "answers":["Jom cheoncheonhi malhae juseyo", "Cheoncheonhi iyagi hae juseyo", "Deo cheoncheonhi juseyo"] },
+  { "d":3, "prompt":"Say 'I'm still learning [language].'", "answers":["Ajik baeu-neun jung-ieyo", "Cheoncheonhi baeu-go isseoyo", "Ajik bujok haeyo"] },
+  { "d":3, "prompt":"Say 'I understand a little but speaking is still hard.'", "answers":["Jogeumyo, deud-gi-neun doeyo geunde mal-ha-gi-ga eoryeowo-yo", "Adeul-eun su-neun isseo-yo geunde mal-hagie eoryeowo", "Ihaega doeneyo geunde haenagie eoryeo-woyo"] },
+  { "d":3, "prompt":"Ask what someone does for work.", "answers":["Mueun il haseyo?", "Jikeob-i mwoyeyo?", "Eodie-seo il haseyo?"] },
+  { "d":3, "prompt":"Say what you do for work.", "answers":["Jeo-neun [job]-ieyo", "[Job]-eul hago isseoyo", "[Job]-imnida"] },
+  { "d":4, "prompt":"Say you've been trying to learn the language for a few months.", "answers":["Myeot dal jjae gongbu hago isseoyo", "Yol-sim-hi baeuryeo-go hago isseoyo", "Cheoncheonhi baeugo isseoyo"] },
+  { "d":4, "prompt":"Compliment someone's language skills and ask how they learned.", "answers":["Jinjja jal haseyo! Eotteoke bae-u-syeo-sseoyo?", "Neomu jal hasyeo-yo! Eodie-seo bae-u-syeo-sseoyo?", "Eotteoke geuritge jal hasyeo-yo?"] }
+];

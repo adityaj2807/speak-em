@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Speakr — Language Practice</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f5f5f3;--bg3:#eeede9;
+  --text:#1a1a1a;--text2:#666560;--text3:#999891;
+  --border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.22);
+  --green-bg:#e1f5ee;--green-mid:#1d9e75;--green-dark:#085041;--green-border:#9fe1cb;
+  --radius-md:8px;--radius-lg:12px;--radius-xl:16px;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1c1c1a;--bg2:#242422;--bg3:#2c2c2a;
+    --text:#f0ede6;--text2:#a8a59e;--text3:#6e6c67;
+    --border:rgba(255,255,255,0.1);--border2:rgba(255,255,255,0.2);
+    --green-bg:#04342c;--green-mid:#1d9e75;--green-dark:#5dcaa5;--green-border:#085041;
+  }
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center}
+.app{width:100%;max-width:480px;min-height:100vh;display:flex;flex-direction:column}
+.screen{display:none;flex-direction:column;gap:1rem;padding:1.5rem 1.25rem;min-height:100vh}
+.screen.active{display:flex}
+h1{font-size:22px;font-weight:600;line-height:1.3}
+.sub{font-size:14px;color:var(--text2);line-height:1.55}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:var(--text2);font-size:14px;padding:0}
+.back-btn:hover{color:var(--text)}
+.back-btn svg{width:16px;height:16px}
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lang-btn{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1rem;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:5px;transition:background 0.12s}
+.lang-btn:hover{background:var(--bg2);border-color:var(--border2)}
+.lang-btn .flag{font-size:28px;line-height:1}
+.lang-btn .lang-name{font-size:15px;font-weight:600;color:var(--text)}
+.lang-btn .lang-note{font-size:11px;color:var(--text3)}
+.level-list{display:flex;flex-direction:column;gap:8px}
+.level-btn{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;cursor:pointer;text-align:left;transition:background 0.12s}
+.level-btn:hover{background:var(--bg2);border-color:var(--border2)}
+.level-btn .level-name{font-size:15px;font-weight:600;color:var(--text)}
+.level-btn .level-desc{font-size:13px;color:var(--text2);margin-top:3px}
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scenario-btn{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:0.9rem 1rem;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:5px;transition:background 0.12s}
+.scenario-btn:hover{background:var(--bg2);border-color:var(--border2)}
+.scenario-btn .sc-icon{font-size:22px;line-height:1}
+.scenario-btn .sc-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.3}
+.scenario-btn .sc-count{font-size:11px;color:var(--text3)}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:4px 10px;border-radius:20px;background:var(--bg2);color:var(--text2);width:fit-content}
+.card-meta{display:flex;justify-content:space-between;align-items:center}
+.counter{font-size:13px;color:var(--text2)}
+.scenario-label{font-size:13px;color:var(--text3)}
+.progress-bar{width:100%;height:4px;background:var(--bg2);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:var(--green-mid);border-radius:2px;transition:width 0.3s ease}
+.prompt-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem}
+.prompt-text{font-size:16px;line-height:1.65;text-align:center;color:var(--text)}
+.diff-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 8px;border-radius:12px;background:var(--bg2);color:var(--text3);width:fit-content;margin-top:-4px}
+.reveal-btn{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:0.9rem;cursor:pointer;text-align:center;font-size:15px;font-weight:600;color:var(--text);transition:background 0.12s;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
+.reveal-btn:hover{background:var(--bg3)}
+.answers-area{display:none;flex-direction:column;gap:8px}
+.answer-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:0.9rem 1rem}
+.answer-card.primary{background:var(--green-bg);border-color:var(--green-border)}
+.answer-label{font-size:11px;color:var(--text3);margin-bottom:4px}
+.answer-card.primary .answer-label{color:var(--green-dark)}
+.answer-text{font-size:15px;font-weight:600;color:var(--text);line-height:1.45}
+.answer-card.primary .answer-text{color:var(--green-dark)}
+.nav-row{display:flex;gap:8px;margin-top:auto;padding-top:0.5rem}
+.nav-btn{flex:1;padding:0.85rem;border:0.5px solid var(--border);border-radius:var(--radius-lg);background:var(--bg);cursor:pointer;font-size:14px;font-weight:600;color:var(--text);transition:background 0.12s;display:flex;align-items:center;justify-content:center;gap:6px}
+.nav-btn:hover{background:var(--bg2)}
+.nav-btn.primary{background:var(--green-mid);color:#fff;border-color:var(--green-mid)}
+.nav-btn.primary:hover{background:var(--green-dark);border-color:var(--green-dark)}
+.nav-btn:disabled{opacity:0.3;cursor:not-allowed}
+.nav-btn svg{width:16px;height:16px}
+.done-hero{background:var(--green-bg);border:0.5px solid var(--green-border);border-radius:var(--radius-xl);padding:2rem 1.5rem;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.done-emoji{font-size:40px}
+.done-title{font-size:20px;font-weight:700;color:var(--green-dark)}
+.done-sub{font-size:14px;color:var(--green-mid)}
+.footer{font-size:11px;color:var(--text3);text-align:center;padding:1rem 0 0.5rem;margin-top:auto}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div id="s-lang" class="screen active">
+  <div style="padding-top:0.5rem"><h1>Speakr</h1><p class="sub" style="margin-top:6px">Speak out loud. No typing. Pick a language.</p></div>
+  <div class="lang-grid">
+    <button class="lang-btn" onclick="chooseLang('ko')"><span class="flag">🇰🇷</span><span class="lang-name">Korean</span><span class="lang-note">Romanized · 12 scenarios</span></button>
+    <button class="lang-btn" onclick="chooseLang('es')"><span class="flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-note">12 scenarios</span></button>
+    <button class="lang-btn" onclick="chooseLang('pt')"><span class="flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-note">12 scenarios</span></button>
+    <button class="lang-btn" onclick="chooseLang('zh')"><span class="flag">🇨🇳</span><span class="lang-name">Mandarin</span><span class="lang-note">Pinyin · 12 scenarios</span></button>
+    <button class="lang-btn" onclick="chooseLang('ja')"><span class="flag">🇯🇵</span><span class="lang-name">Japanese</span><span class="lang-note">Romaji · 12 scenarios</span></button>
+  </div>
+  <div class="footer">Speak, don't type · All romanized · No install needed</div>
+</div>
+
+<div id="s-level" class="screen">
+  <button class="back-btn" onclick="goTo('s-lang')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+  <h1>What's your level?</h1>
+  <p class="sub">Cards are filtered to your level. Be honest.</p>
+  <div class="level-list">
+    <button class="level-btn" onclick="chooseLevel(1)"><div class="level-name">Beginner</div><div class="level-desc">I know a few words, that's it</div></button>
+    <button class="level-btn" onclick="chooseLevel(2)"><div class="level-name">Basic</div><div class="level-desc">I can speak a little, with effort</div></button>
+    <button class="level-btn" onclick="chooseLevel(3)"><div class="level-name">Intermediate</div><div class="level-desc">I can speak and understand some</div></button>
+    <button class="level-btn" onclick="chooseLevel(4)"><div class="level-name">Good</div><div class="level-desc">I can hold a conversation with a native speaker</div></button>
+  </div>
+</div>
+
+<div id="s-scenario" class="screen">
+  <button class="back-btn" onclick="goTo('s-level')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+  <div><h1>Pick a scenario</h1><p class="sub" style="margin-top:4px">Say each phrase out loud before revealing.</p></div>
+  <div id="scenario-grid" class="scenario-grid"></div>
+</div>
+
+<div id="s-card" class="screen">
+  <button class="back-btn" onclick="goTo('s-scenario')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Scenarios</button>
+  <div class="chip" id="card-chip">🇰🇷 Korean · Beginner</div>
+  <div class="card-meta"><span class="counter" id="card-counter">1 / 10</span><span class="scenario-label" id="card-scenario-name"></span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:5%"></div></div>
+  <div class="prompt-card"><p class="prompt-text" id="prompt-text"></p></div>
+  <div class="diff-badge" id="diff-badge">● Beginner</div>
+  <button class="reveal-btn" id="reveal-btn" onclick="revealAnswers()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    Show answers
+  </button>
+  <div class="answers-area" id="answers-area"></div>
+  <div class="nav-row">
+    <button class="nav-btn" id="btn-undo" onclick="undoCard()" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Undo</button>
+    <button class="nav-btn primary" id="btn-next" onclick="nextCard()">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+  </div>
+</div>
+
+<div id="s-done" class="screen">
+  <div class="done-hero"><div class="done-emoji">🎉</div><div class="done-title">Deck complete!</div><div class="done-sub" id="done-sub"></div></div>
+  <div class="nav-row" style="margin-top:0">
+    <button class="nav-btn" onclick="restartScenario()">Repeat</button>
+    <button class="nav-btn primary" onclick="goTo('s-scenario')">New scenario<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+  </div>
+  <button class="back-btn" style="justify-content:center;margin-top:0.5rem" onclick="goTo('s-lang')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Change language</button>
+</div>
+
+<!-- ── deck files: one per language × scenario ── -->
+<script src="decks/ko/introductions.js"></script>
+<script src="decks/ko/cafe.js"></script>
+<script src="decks/ko/restro.js"></script>
+<script src="decks/ko/shopping.js"></script>
+<script src="decks/ko/taxi.js"></script>
+<script src="decks/ko/CVS.js"></script>
+<script src="decks/ko/market.js"></script>
+<script src="decks/ko/directions.js"></script>
+<script src="decks/ko/pharmacy.js"></script>
+<script src="decks/ko/office.js"></script>
+<script src="decks/ko/workdinner.js"></script>
+<script src="decks/ko/social.js"></script>
+<script src="decks/es/introductions.js"></script>
+<script src="decks/es/cafe.js"></script>
+<script src="decks/es/restro.js"></script>
+<script src="decks/es/shopping.js"></script>
+<script src="decks/es/taxi.js"></script>
+<script src="decks/es/CVS.js"></script>
+<script src="decks/es/market.js"></script>
+<script src="decks/es/directions.js"></script>
+<script src="decks/es/pharmacy.js"></script>
+<script src="decks/es/office.js"></script>
+<script src="decks/es/workdinner.js"></script>
+<script src="decks/es/social.js"></script>
+<script src="decks/pt/introductions.js"></script>
+<script src="decks/pt/cafe.js"></script>
+<script src="decks/pt/restro.js"></script>
+<script src="decks/pt/shopping.js"></script>
+<script src="decks/pt/taxi.js"></script>
+<script src="decks/pt/CVS.js"></script>
+<script src="decks/pt/market.js"></script>
+<script src="decks/pt/directions.js"></script>
+<script src="decks/pt/pharmacy.js"></script>
+<script src="decks/pt/office.js"></script>
+<script src="decks/pt/workdinner.js"></script>
+<script src="decks/pt/social.js"></script>
+<script src="decks/zh/introductions.js"></script>
+<script src="decks/zh/cafe.js"></script>
+<script src="decks/zh/restro.js"></script>
+<script src="decks/zh/shopping.js"></script>
+<script src="decks/zh/taxi.js"></script>
+<script src="decks/zh/CVS.js"></script>
+<script src="decks/zh/market.js"></script>
+<script src="decks/zh/directions.js"></script>
+<script src="decks/zh/pharmacy.js"></script>
+<script src="decks/zh/office.js"></script>
+<script src="decks/zh/workdinner.js"></script>
+<script src="decks/zh/social.js"></script>
+<script src="decks/ja/introductions.js"></script>
+<script src="decks/ja/cafe.js"></script>
+<script src="decks/ja/restro.js"></script>
+<script src="decks/ja/shopping.js"></script>
+<script src="decks/ja/taxi.js"></script>
+<script src="decks/ja/CVS.js"></script>
+<script src="decks/ja/market.js"></script>
+<script src="decks/ja/directions.js"></script>
+<script src="decks/ja/pharmacy.js"></script>
+<script src="decks/ja/office.js"></script>
+<script src="decks/ja/workdinner.js"></script>
+<script src="decks/ja/social.js"></script>
+
+<script>
+const SCENARIOS_META = [
+  { key:"introductions", name:"Introductions",    icon:"🙋" },
+  { key:"cafe",          name:"Cafe",              icon:"☕" },
+  { key:"restro",        name:"Restaurant",        icon:"🍜" },
+  { key:"shopping",      name:"Shopping",          icon:"🛍️" },
+  { key:"taxi",          name:"Taxi",              icon:"🚕" },
+  { key:"CVS",           name:"Convenience store", icon:"🏪" },
+  { key:"market",        name:"Market",            icon:"🥬" },
+  { key:"directions",    name:"Directions",        icon:"🗺️" },
+  { key:"pharmacy",      name:"Pharmacy",          icon:"💊" },
+  { key:"office",        name:"Office",            icon:"💼" },
+  { key:"workdinner",    name:"Work dinner",       icon:"🥂" },
+  { key:"social",        name:"Social",            icon:"💬" },
+];
+
+// Reconstruct CARDS from per-language deck files
+const _LANGS = ["ko", "es", "pt", "zh", "ja"];
+const _SCENARIOS = ["introductions", "cafe", "restro", "shopping", "taxi", "CVS", "market", "directions", "pharmacy", "office", "workdinner", "social"];
+const CARDS = {};
+_SCENARIOS.forEach(sc => {
+  const base = (window.DECKS[_LANGS[0]] || {})[sc] || [];
+  CARDS[sc] = base.map((card, idx) => {
+    const answers = {};
+    _LANGS.forEach(lang => {
+      answers[lang] = ((window.DECKS[lang] || {})[sc] || [])[idx]?.answers || [];
+    });
+    return { d: card.d, prompt: card.prompt, answers };
+  });
+});
+
+// ─────────────────────────────────────────────────────────────
+// LANG & LEVEL INFO
+// ─────────────────────────────────────────────────────────────
+const LANG_INFO = {
+  ko:{name:"Korean",    flag:"🇰🇷", note:"Romanized"},
+  es:{name:"Spanish",   flag:"🇪🇸", note:"Spanish"},
+  pt:{name:"Portuguese",flag:"🇧🇷", note:"Portuguese"},
+  zh:{name:"Mandarin",  flag:"🇨🇳", note:"Pinyin"},
+  ja:{name:"Japanese",  flag:"🇯🇵", note:"Romaji"},
+};
+const LEVEL_LABELS = {1:"Beginner",2:"Basic",3:"Intermediate",4:"Good"};
+const DIFF_DOTS    = {1:"● ○ ○ ○",2:"● ● ○ ○",3:"● ● ● ○",4:"● ● ● ●"};
+const LEVEL_RANGES = {1:[1],2:[1,2],3:[2,3],4:[3,4]};
+
+// ─────────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────────
+let S = {lang:null, level:null, scenario:null, deck:[], idx:0};
+
+// ─────────────────────────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────────────────────────
+function goTo(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function chooseLang(lang){
+  S.lang = lang;
+  goTo('s-level');
+}
+
+function chooseLevel(lvl){
+  S.level = lvl;
+  buildScenarioGrid();
+  goTo('s-scenario');
+}
+
+// ─────────────────────────────────────────────────────────────
+// SCENARIO GRID
+// ─────────────────────────────────────────────────────────────
+function buildScenarioGrid(){
+  const grid = document.getElementById('scenario-grid');
+  grid.innerHTML = '';
+  SCENARIOS_META.forEach(({key,name,icon})=>{
+    const cards = getFilteredCards(key);
+    const btn = document.createElement('button');
+    btn.className = 'scenario-btn';
+    btn.innerHTML = `<span class="sc-icon">${icon}</span><span class="sc-name">${name}</span><span class="sc-count">${cards.length} cards</span>`;
+    btn.onclick = ()=>startScenario(key);
+    grid.appendChild(btn);
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// DIFFICULTY FILTER
+// Beginner=d1 · Basic=d1+d2 · Intermediate=d2+d3 · Good=d3+d4
+// ─────────────────────────────────────────────────────────────
+function getFilteredCards(scenarioKey){
+  const allowed = LEVEL_RANGES[S.level];
+  return (CARDS[scenarioKey]||[]).filter(c=>allowed.includes(c.d));
+}
+
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+// ─────────────────────────────────────────────────────────────
+// START SCENARIO
+// ─────────────────────────────────────────────────────────────
+function startScenario(key){
+  const filtered = getFilteredCards(key);
+  if(!filtered.length){ alert('No cards for this level yet.'); return; }
+  S.scenario = key;
+  S.deck = shuffle(filtered);
+  S.idx = 0;
+  renderCard();
+  goTo('s-card');
+}
+
+// ─────────────────────────────────────────────────────────────
+// RENDER CARD
+// ─────────────────────────────────────────────────────────────
+function renderCard(){
+  const card  = S.deck[S.idx];
+  const total = S.deck.length;
+  const li    = LANG_INFO[S.lang];
+  const meta  = SCENARIOS_META.find(s=>s.key===S.scenario);
+
+  document.getElementById('card-chip').textContent = `${li.flag} ${li.name} · ${LEVEL_LABELS[S.level]}`;
+  document.getElementById('card-counter').textContent = `${S.idx+1} / ${total}`;
+  document.getElementById('card-scenario-name').textContent = meta ? meta.name : '';
+  document.getElementById('progress-fill').style.width = Math.max(Math.round((S.idx/total)*100),3)+'%';
+  document.getElementById('prompt-text').textContent = card.prompt;
+  document.getElementById('diff-badge').textContent = `${DIFF_DOTS[card.d]}  ${LEVEL_LABELS[card.d]}`;
+
+  // reset reveal
+  document.getElementById('reveal-btn').style.display = 'flex';
+  const aa = document.getElementById('answers-area');
+  aa.style.display = 'none';
+  aa.innerHTML = '';
+
+  document.getElementById('btn-undo').disabled = S.idx===0;
+  const btnNext = document.getElementById('btn-next');
+  btnNext.innerHTML = S.idx>=total-1
+    ? 'Finish <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>'
+    : 'Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+}
+
+// ─────────────────────────────────────────────────────────────
+// REVEAL ANSWERS
+// ─────────────────────────────────────────────────────────────
+function revealAnswers(){
+  const card = S.deck[S.idx];
+  const answers = card.answers[S.lang] || [];
+  const aa = document.getElementById('answers-area');
+  aa.innerHTML = '';
+  answers.forEach((ans,i)=>{
+    const div = document.createElement('div');
+    div.className = 'answer-card'+(i===0?' primary':'');
+    div.innerHTML = `<div class="answer-label">${i===0?'Main response':'Alternative '+i}</div><div class="answer-text">${ans}</div>`;
+    aa.appendChild(div);
+  });
+  aa.style.display = 'flex';
+  document.getElementById('reveal-btn').style.display = 'none';
+}
+
+// ─────────────────────────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────────────────────────
+function nextCard(){
+  if(S.idx>=S.deck.length-1){ showDone(); }
+  else{ S.idx++; renderCard(); }
+}
+
+function undoCard(){
+  if(S.idx>0){ S.idx--; renderCard(); }
+}
+
+function showDone(){
+  const meta = SCENARIOS_META.find(s=>s.key===S.scenario);
+  document.getElementById('done-sub').textContent =
+    `${S.deck.length} phrases · ${meta?meta.icon+' '+meta.name:''}`;
+  goTo('s-done');
+}
+
+function restartScenario(){
+  S.deck = shuffle(S.deck);
+  S.idx = 0;
+  renderCard();
+  goTo('s-card');
+}
+</script>
+</div><!-- /.app -->
+</body>
+</html>

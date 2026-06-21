@@ -1,0 +1,32 @@
+window.DECKS = window.DECKS || {};
+window.DECKS["ja"] = window.DECKS["ja"] || {};
+window.DECKS["ja"]["introductions"] = [
+  { "d":1, "prompt":"Say hello.", "answers":["Konnichiwa!", "Ohayou gozaimasu!", "Yaa!"] },
+  { "d":1, "prompt":"Say good morning.", "answers":["Ohayou gozaimasu!", "Ohayou!", "Ohayou ne!"] },
+  { "d":1, "prompt":"Say good evening.", "answers":["Konbanwa!", "Konbanwa ne!", "Oyasuminasai!"] },
+  { "d":1, "prompt":"Say thank you.", "answers":["Arigatou gozaimasu!", "Arigatou!", "Doumo!"] },
+  { "d":1, "prompt":"Say sorry / excuse me.", "answers":["Sumimasen", "Gomen nasai", "Shitsurei shimasu"] },
+  { "d":1, "prompt":"Say yes.", "answers":["Hai", "Ee", "Sou desu"] },
+  { "d":1, "prompt":"Say no.", "answers":["Iie", "Chigaimasu", "Dame desu"] },
+  { "d":1, "prompt":"Say please.", "answers":["Onegaishimasu", "Kudasai", "Yoroshiku"] },
+  { "d":1, "prompt":"Introduce your name.", "answers":["Watashi wa [your name] desu", "[Your name] to moushimasu", "[Your name] to iimasu"] },
+  { "d":1, "prompt":"Say 'nice to meet you.'", "answers":["Hajimemashite", "Yoroshiku onegaishimasu", "Oai dekite kouei desu"] },
+  { "d":1, "prompt":"Say goodbye.", "answers":["Sayonara", "Ja mata ne", "Dewa mata"] },
+  { "d":1, "prompt":"Say 'see you later.'", "answers":["Mata ne", "Ja ne", "Mata kondo"] },
+  { "d":2, "prompt":"Ask 'how are you?'", "answers":["Ogenki desu ka?", "Saikin dou desu ka?", "Dou desu ka?"] },
+  { "d":2, "prompt":"Respond: 'I'm fine, thank you.'", "answers":["Genki desu, arigatou", "Daijoubu desu, arigatou", "Genki desu yo"] },
+  { "d":2, "prompt":"Say 'I don't understand.'", "answers":["Wakarimasen", "Rikai dekimasen", "Chotto wakaranai"] },
+  { "d":2, "prompt":"Ask 'do you speak English?'", "answers":["Eigo wa hanasemasu ka?", "Eigo wakarimasu ka?", "Eigo OK desu ka?"] },
+  { "d":2, "prompt":"Say 'I speak a little [language].'", "answers":["Sukoshi hanasemasu", "Sukoshi dake", "Chotto dake"] },
+  { "d":2, "prompt":"Say where you're from.", "answers":["[Your country] kara kimashita", "[Your country]-jin desu", "[Your country] desu"] },
+  { "d":2, "prompt":"Ask someone's name.", "answers":["Onamae wa nan desu ka?", "Onamae wa?", "Nante iimasu ka?"] },
+  { "d":2, "prompt":"Ask 'where are you from?'", "answers":["Dochira no go-shusshin desu ka?", "Doko kara kimashita ka?", "Doko no kata desu ka?"] },
+  { "d":2, "prompt":"Say you live in [your city].", "answers":["[Your city] ni sunde imasu", "[Your city] ni imasu", "[Your city] ni sunderu"] },
+  { "d":3, "prompt":"Say 'can you speak more slowly, please?'", "answers":["Motto yukkuri hanashite kudasai", "Yukkuri onegaishimasu", "Motto yukkuri itte kudasai"] },
+  { "d":3, "prompt":"Say 'I'm still learning [language].'", "answers":["Mada benkyou chuu desu", "Mada manande iru tokoro desu", "Mada heta desu"] },
+  { "d":3, "prompt":"Say 'I understand a little but speaking is still hard.'", "answers":["Sukoshi wa rikai dekimasu ga hanasu no wa mada muzukashii desu", "Kiite wa wakarimasu ga hanaseru ka wa betsu desu", "Rikai wa dekimasu demo hanasu no wa muzukashii"] },
+  { "d":3, "prompt":"Ask what someone does for work.", "answers":["Oshigoto wa nan desu ka?", "Nani wo shite imasu ka?", "Donnaoshigoto desu ka?"] },
+  { "d":3, "prompt":"Say what you do for work.", "answers":["[Job] desu", "[Job] wo shite imasu", "[Job] to iu shigoto desu"] },
+  { "d":4, "prompt":"Say you've been trying to learn the language for a few months.", "answers":["Suukagetsu benkyou shite imasu", "Suu-kagetsu mae kara manainde imasu", "Suukagetsu benkyou chuu desu"] },
+  { "d":4, "prompt":"Compliment someone's language skills and ask how they learned.", "answers":["Totemo jouzu desu ne! Dou yatte oboeta no desu ka?", "Sugoi jouzu! Docde naratta no?", "Umai desu ne! Dou manainda no?"] }
+];
