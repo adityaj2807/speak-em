@@ -1,20 +1,20 @@
 window.DECKS = window.DECKS || {};
 window.DECKS["pt"] = window.DECKS["pt"] || {};
 window.DECKS["pt"]["workdinner"] = [
-  { "d":1, "prompt":"Say cheers!", "answers":["Saúde!", "Tim-tim!", "Vamos brindar!"] },
-  { "d":1, "prompt":"Compliment the food at the dinner.", "answers":["Está uma delícia!", "Que comida boa!", "Está tudo ótimo!"] },
-  { "d":1, "prompt":"Respond to please eat a lot.", "answers":["Obrigado/a com certeza!", "Obrigado/a tudo parece delicioso!", "Com prazer obrigado/a!"] },
-  { "d":1, "prompt":"Receive a drink poured for you. Accept graciously.", "answers":["Obrigado/a!", "Muito gentil obrigado/a!", "Que gentileza obrigado/a!"] },
-  { "d":1, "prompt":"Say you had a wonderful time.", "answers":["Foi uma noite incrível!", "Me diverti muito!", "Foi ótimo obrigado/a!"] },
-  { "d":2, "prompt":"Politely decline more alcohol.", "answers":["Já estou bem obrigado/a", "Não precisa mais obrigado/a", "Já chega obrigado/a"] },
-  { "d":2, "prompt":"Pour a drink for someone senior.", "answers":["Deixa eu servir", "Posso servir?", "Vou servir você"] },
-  { "d":2, "prompt":"Say you'll have just one glass.", "answers":["Só uma taça", "Só um copo obrigado/a", "Tomarei só um"] },
-  { "d":2, "prompt":"Propose a toast to the team.", "answers":["Pelo time!", "Um brinde a todos nós!", "Pelo trabalho em equipe!"] },
-  { "d":2, "prompt":"Compliment the venue.", "answers":["Que lugar bonito!", "Que ambiente agradável!", "Adorei o local!"] },
-  { "d":3, "prompt":"Offer to pay the bill.", "answers":["Deixa eu pagar", "Essa é por minha conta", "Vou pagar eu"] },
-  { "d":3, "prompt":"Senior insists on paying. Thank and promise next time.", "answers":["Muito obrigado/a! A próxima é por minha conta", "Obrigado/a da próxima eu pago", "Muito gentil! Próxima vez é minha"] },
-  { "d":3, "prompt":"Ask what someone's research / work focuses on.", "answers":["Em que área você trabalha?", "Qual é o seu campo?", "O que você pesquisa?"] },
-  { "d":3, "prompt":"Thank the host for organizing the dinner.", "answers":["Obrigado/a por organizar tudo", "Foi muito gentil nos convidar", "Obrigado/a pelo jantar foi ótimo!"] },
-  { "d":4, "prompt":"Make a heartfelt toast speech.", "answers":["Foi uma honra estar com todos vocês esta noite! Saúde!", "Muito obrigado a todos por estarem aqui! Pelo time!", "Esta noite foi especial graças a vocês. Saúde!"] },
-  { "d":4, "prompt":"Say whether you enjoy work dinners and socializing with colleagues.", "answers":["Sim adoro! É uma ótima forma de se conhecer melhor", "Gosto bastante cria laços de trabalho", "Adoro é bom conhecer as pessoas fora do trabalho"] }
+  { "d":1, "prompt":"Say cheers!", "answers":["Saúde!", "Tim-tim!", "Vamos brindar!"], "translations":["Health! (cheers)", "Ting-ting! (clink sound)", "Let's toast!"] },
+  { "d":1, "prompt":"Compliment the food at the dinner.", "answers":["Está uma delícia!", "Que comida boa!", "Está tudo ótimo!"], "translations":["It is a delight!", "What good food!", "It is all great!"] },
+  { "d":1, "prompt":"Respond to please eat a lot.", "answers":["Obrigado/a com certeza!", "Obrigado/a tudo parece delicioso!", "Com prazer obrigado/a!"], "translations":["Obliged with certainty!", "Obliged everything seems delicious!", "With pleasure obliged!"] },
+  { "d":1, "prompt":"Receive a drink poured for you. Accept graciously.", "answers":["Obrigado/a!", "Muito gentil obrigado/a!", "Que gentileza obrigado/a!"], "translations":["Obliged!", "Very kind obliged!", "What kindness obliged!"] },
+  { "d":1, "prompt":"Say you had a wonderful time.", "answers":["Foi uma noite incrível!", "Me diverti muito!", "Foi ótimo obrigado/a!"], "translations":["Was an incredible night!", "I amused myself a lot!", "Was great obliged!"] },
+  { "d":2, "prompt":"Politely decline more alcohol.", "answers":["Já estou bem obrigado/a", "Não precisa mais obrigado/a", "Já chega obrigado/a"], "translations":["Already I am good obliged (I'm fine thanks)", "No need more obliged", "Already enough obliged"] },
+  { "d":2, "prompt":"Pour a drink for someone senior.", "answers":["Deixa eu servir", "Posso servir?", "Vou servir você"], "translations":["Let me serve", "Can I serve?", "I'll serve you"] },
+  { "d":2, "prompt":"Say you'll have just one glass.", "answers":["Só uma taça", "Só um copo obrigado/a", "Tomarei só um"], "translations":["Only one glass (wine glass)", "Only one cup/glass obliged", "I'll take only one"] },
+  { "d":2, "prompt":"Propose a toast to the team.", "answers":["Pelo time!", "Um brinde a todos nós!", "Pelo trabalho em equipe!"], "translations":["For the team!", "A toast to all of us!", "For the teamwork!"] },
+  { "d":2, "prompt":"Compliment the venue.", "answers":["Que lugar bonito!", "Que ambiente agradável!", "Adorei o local!"], "translations":["What a beautiful place!", "What an agreeable ambiance!", "Loved the venue!"] },
+  { "d":3, "prompt":"Offer to pay the bill.", "answers":["Deixa eu pagar", "Essa é por minha conta", "Vou pagar eu"], "translations":["Let me pay", "This one is on my account", "I'll pay (I will)"] },
+  { "d":3, "prompt":"Senior insists on paying. Thank and promise next time.", "answers":["Muito obrigado/a! A próxima é por minha conta", "Obrigado/a da próxima eu pago", "Muito gentil! Próxima vez é minha"], "translations":["Very obliged! The next is on my account", "Obliged on the next one I pay", "Very kind! Next time is mine"] },
+  { "d":3, "prompt":"Ask what someone's research / work focuses on.", "answers":["Em que área você trabalha?", "Qual é o seu campo?", "O que você pesquisa?"], "translations":["In what area you work?", "What is your field?", "What you research?"] },
+  { "d":3, "prompt":"Thank the host for organizing the dinner.", "answers":["Obrigado/a por organizar tudo", "Foi muito gentil nos convidar", "Obrigado/a pelo jantar foi ótimo!"], "translations":["Obliged for organizing everything", "Was very kind to invite us", "Obliged for the dinner it was great!"] },
+  { "d":4, "prompt":"Make a heartfelt toast speech.", "answers":["Foi uma honra estar com todos vocês esta noite! Saúde!", "Muito obrigado a todos por estarem aqui! Pelo time!", "Esta noite foi especial graças a vocês. Saúde!"], "translations":["Was an honor to be with all of you this night! Health!", "Very obliged to all for being here! For the team!", "This night was special thanks to you all. Health!"] },
+  { "d":4, "prompt":"Say whether you enjoy work dinners and socializing with colleagues.", "answers":["Sim adoro! É uma ótima forma de se conhecer melhor", "Gosto bastante cria laços de trabalho", "Adoro é bom conhecer as pessoas fora do trabalho"], "translations":["Yes I love it! It is a great form to get to know better", "I like quite a bit it creates work bonds", "I love it it's good to know the people outside of work"] }
 ];
