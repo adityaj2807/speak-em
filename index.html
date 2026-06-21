@@ -88,11 +88,8 @@ h1{font-size:22px;font-weight:600;line-height:1.3}
 <div id="s-lang" class="screen active">
   <div style="padding-top:0.5rem"><h1>Speak 'em</h1><p class="sub" style="margin-top:6px">Speak out loud. No typing. Pick a language.</p></div>
   <div class="lang-grid">
-    <button class="lang-btn" onclick="chooseLang('ko')"><span class="flag">🇰🇷</span><span class="lang-name">Korean</span><span class="lang-note">Romanized · 12 scenarios</span></button>
-    <button class="lang-btn" onclick="chooseLang('es')"><span class="flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-note">12 scenarios</span></button>
-    <button class="lang-btn" onclick="chooseLang('pt')"><span class="flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-note">12 scenarios</span></button>
-    <button class="lang-btn" onclick="chooseLang('zh')"><span class="flag">🇨🇳</span><span class="lang-name">Mandarin</span><span class="lang-note">Pinyin · 12 scenarios</span></button>
-    <button class="lang-btn" onclick="chooseLang('ja')"><span class="flag">🇯🇵</span><span class="lang-name">Japanese</span><span class="lang-note">Romaji · 12 scenarios</span></button>
+    <button class="lang-btn" onclick="chooseLang('ko')"><span class="flag">🇰🇷</span><span class="lang-name">Korean</span><span class="lang-note">Romanized · 13 scenarios</span></button>
+    <button class="lang-btn" onclick="chooseLang('pt')"><span class="flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-note">13 scenarios</span></button>
   </div>
   <div class="footer">Speak, don't type · All romanized · No install needed</div>
 </div>
@@ -155,18 +152,6 @@ h1{font-size:22px;font-weight:600;line-height:1.3}
 <script src="decks/ko/office.js"></script>
 <script src="decks/ko/workdinner.js"></script>
 <script src="decks/ko/social.js"></script>
-<script src="decks/es/introductions.js"></script>
-<script src="decks/es/cafe.js"></script>
-<script src="decks/es/restro.js"></script>
-<script src="decks/es/shopping.js"></script>
-<script src="decks/es/taxi.js"></script>
-<script src="decks/es/CVS.js"></script>
-<script src="decks/es/market.js"></script>
-<script src="decks/es/directions.js"></script>
-<script src="decks/es/pharmacy.js"></script>
-<script src="decks/es/office.js"></script>
-<script src="decks/es/workdinner.js"></script>
-<script src="decks/es/social.js"></script>
 <script src="decks/pt/introductions.js"></script>
 <script src="decks/pt/cafe.js"></script>
 <script src="decks/pt/restro.js"></script>
@@ -179,30 +164,6 @@ h1{font-size:22px;font-weight:600;line-height:1.3}
 <script src="decks/pt/office.js"></script>
 <script src="decks/pt/workdinner.js"></script>
 <script src="decks/pt/social.js"></script>
-<script src="decks/zh/introductions.js"></script>
-<script src="decks/zh/cafe.js"></script>
-<script src="decks/zh/restro.js"></script>
-<script src="decks/zh/shopping.js"></script>
-<script src="decks/zh/taxi.js"></script>
-<script src="decks/zh/CVS.js"></script>
-<script src="decks/zh/market.js"></script>
-<script src="decks/zh/directions.js"></script>
-<script src="decks/zh/pharmacy.js"></script>
-<script src="decks/zh/office.js"></script>
-<script src="decks/zh/workdinner.js"></script>
-<script src="decks/zh/social.js"></script>
-<script src="decks/ja/introductions.js"></script>
-<script src="decks/ja/cafe.js"></script>
-<script src="decks/ja/restro.js"></script>
-<script src="decks/ja/shopping.js"></script>
-<script src="decks/ja/taxi.js"></script>
-<script src="decks/ja/CVS.js"></script>
-<script src="decks/ja/market.js"></script>
-<script src="decks/ja/directions.js"></script>
-<script src="decks/ja/pharmacy.js"></script>
-<script src="decks/ja/office.js"></script>
-<script src="decks/ja/workdinner.js"></script>
-<script src="decks/ja/social.js"></script>
 <script src="decks/pt/small_talk.js"></script>
 
 <script>
@@ -224,7 +185,7 @@ const SCENARIOS_META = [
 ];
 
 // Reconstruct CARDS from per-language deck files
-const _LANGS = ["ko", "es", "pt", "zh", "ja"];
+const _LANGS = ["ko", "pt"];
 const _SCENARIOS = ["introductions", "small_talk", "cafe", "restro", "shopping", "taxi", "CVS", "market", "directions", "pharmacy", "office", "workdinner", "social"];
 const CARDS = {};
 _SCENARIOS.forEach(sc => {
