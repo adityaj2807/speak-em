@@ -68,6 +68,7 @@ h1{font-size:22px;font-weight:600;line-height:1.3}
 .answer-card.primary .answer-label{color:var(--green-dark)}
 .answer-text{font-size:15px;font-weight:600;color:var(--text);line-height:1.45}
 .answer-card.primary .answer-text{color:var(--green-dark)}
+.card-note{font-size:12px;font-style:italic;color:var(--text2);background:var(--bg2);border-radius:var(--radius-lg);padding:0.65rem 0.9rem;line-height:1.6;border:0.5px solid var(--border)}
 .nav-row{display:flex;gap:8px;margin-top:0.5rem;padding-top:0}
 .nav-btn{flex:1;padding:0.85rem;border:0.5px solid var(--border);border-radius:var(--radius-lg);background:var(--bg);cursor:pointer;font-size:14px;font-weight:600;color:var(--text);transition:background 0.12s;display:flex;align-items:center;justify-content:center;gap:6px}
 .nav-btn:hover{background:var(--bg2)}
@@ -88,8 +89,7 @@ h1{font-size:22px;font-weight:600;line-height:1.3}
 <div id="s-lang" class="screen active">
   <div style="padding-top:0.5rem"><h1>Speak 'em</h1><p class="sub" style="margin-top:6px">Speak out loud. No typing. Pick a language.</p></div>
   <div class="lang-grid">
-    <button class="lang-btn" onclick="chooseLang('ko')"><span class="flag">🇰🇷</span><span class="lang-name">Korean</span><span class="lang-note">Romanized · 13 scenarios</span></button>
-    <button class="lang-btn" onclick="chooseLang('pt')"><span class="flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-note">13 scenarios</span></button>
+    <button class="lang-btn" onclick="chooseLang('pt')"><span class="flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-note">Brazilian · 13 scenarios</span></button>
   </div>
   <div class="footer">Speak, don't type · All romanized · No install needed</div>
 </div>
@@ -139,19 +139,7 @@ h1{font-size:22px;font-weight:600;line-height:1.3}
   <button class="back-btn" style="justify-content:center;margin-top:0.5rem" onclick="goTo('s-lang')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Change language</button>
 </div>
 
-<!-- ── deck files: one per language × scenario ── -->
-<script src="decks/ko/introductions.js"></script>
-<script src="decks/ko/cafe.js"></script>
-<script src="decks/ko/restro.js"></script>
-<script src="decks/ko/shopping.js"></script>
-<script src="decks/ko/taxi.js"></script>
-<script src="decks/ko/CVS.js"></script>
-<script src="decks/ko/market.js"></script>
-<script src="decks/ko/directions.js"></script>
-<script src="decks/ko/pharmacy.js"></script>
-<script src="decks/ko/office.js"></script>
-<script src="decks/ko/workdinner.js"></script>
-<script src="decks/ko/social.js"></script>
+<!-- ── deck files ── -->
 <script src="decks/pt/introductions.js"></script>
 <script src="decks/pt/cafe.js"></script>
 <script src="decks/pt/restro.js"></script>
@@ -185,7 +173,7 @@ const SCENARIOS_META = [
 ];
 
 // Reconstruct CARDS from per-language deck files
-const _LANGS = ["ko", "pt"];
+const _LANGS = ["pt"];
 const _SCENARIOS = ["introductions", "small_talk", "cafe", "restro", "shopping", "taxi", "CVS", "market", "directions", "pharmacy", "office", "workdinner", "social"];
 const CARDS = {};
 _SCENARIOS.forEach(sc => {
@@ -198,7 +186,7 @@ _SCENARIOS.forEach(sc => {
       answers[lang] = lc?.answers || [];
       if (lc?.translations) translations[lang] = lc.translations;
     });
-    return { d: card.d, prompt: card.prompt, answers, translations };
+    return { d: card.d, prompt: card.prompt, answers, translations, notes: card.notes || null };
   });
 });
 
@@ -335,6 +323,12 @@ function revealAnswers(){
     div.innerHTML = `<div class="answer-label">${i===0?'Main response':'Alternative '+i}</div><div class="answer-text">${ans}</div>${tr}`;
     aa.appendChild(div);
   });
+  if (card.notes) {
+    const note = document.createElement('div');
+    note.className = 'card-note';
+    note.textContent = card.notes;
+    aa.appendChild(note);
+  }
   aa.style.display = 'flex';
   document.getElementById('reveal-btn').style.display = 'none';
 }
