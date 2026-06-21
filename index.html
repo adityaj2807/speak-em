@@ -63,6 +63,8 @@ h1{font-size:22px;font-weight:600;line-height:1.3}
 .answer-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:0.9rem 1rem}
 .answer-card.primary{background:var(--green-bg);border-color:var(--green-border)}
 .answer-label{font-size:11px;color:var(--text3);margin-bottom:4px}
+.answer-translation{font-size:12px;font-style:italic;color:var(--text3);margin-top:4px;line-height:1.4}
+.answer-card.primary .answer-translation{color:var(--green-dark);opacity:0.75}
 .answer-card.primary .answer-label{color:var(--green-dark)}
 .answer-text{font-size:15px;font-weight:600;color:var(--text);line-height:1.45}
 .answer-card.primary .answer-text{color:var(--green-dark)}
@@ -201,35 +203,41 @@ h1{font-size:22px;font-weight:600;line-height:1.3}
 <script src="decks/ja/office.js"></script>
 <script src="decks/ja/workdinner.js"></script>
 <script src="decks/ja/social.js"></script>
+<script src="decks/pt/small_talk.js"></script>
 
 <script>
+// minLevel: 1=Beginner 2=Basic 3=Intermediate 4=Good
 const SCENARIOS_META = [
-  { key:"introductions", name:"Introductions",    icon:"🙋" },
-  { key:"cafe",          name:"Cafe",              icon:"☕" },
-  { key:"restro",        name:"Restaurant",        icon:"🍜" },
-  { key:"shopping",      name:"Shopping",          icon:"🛍️" },
-  { key:"taxi",          name:"Taxi",              icon:"🚕" },
-  { key:"CVS",           name:"Convenience store", icon:"🏪" },
-  { key:"market",        name:"Market",            icon:"🥬" },
-  { key:"directions",    name:"Directions",        icon:"🗺️" },
-  { key:"pharmacy",      name:"Pharmacy",          icon:"💊" },
-  { key:"office",        name:"Office",            icon:"💼" },
-  { key:"workdinner",    name:"Work dinner",       icon:"🥂" },
-  { key:"social",        name:"Social",            icon:"💬" },
+  { key:"introductions", name:"Introductions",    icon:"🙋", minLevel:1 },
+  { key:"small_talk",    name:"Small Talk",        icon:"🗣️", minLevel:1 },
+  { key:"cafe",          name:"Cafe",              icon:"☕", minLevel:1 },
+  { key:"restro",        name:"Restaurant",        icon:"🍜", minLevel:1 },
+  { key:"taxi",          name:"Taxi",              icon:"🚕", minLevel:1 },
+  { key:"market",        name:"Market",            icon:"🥬", minLevel:1 },
+  { key:"directions",    name:"Directions",        icon:"🗺️", minLevel:1 },
+  { key:"shopping",      name:"Shopping",          icon:"🛍️", minLevel:2 },
+  { key:"CVS",           name:"Convenience store", icon:"🏪", minLevel:2 },
+  { key:"pharmacy",      name:"Pharmacy",          icon:"💊", minLevel:2 },
+  { key:"social",        name:"Social",            icon:"💬", minLevel:2 },
+  { key:"office",        name:"Office",            icon:"💼", minLevel:3 },
+  { key:"workdinner",    name:"Work dinner",       icon:"🥂", minLevel:3 },
 ];
 
 // Reconstruct CARDS from per-language deck files
 const _LANGS = ["ko", "es", "pt", "zh", "ja"];
-const _SCENARIOS = ["introductions", "cafe", "restro", "shopping", "taxi", "CVS", "market", "directions", "pharmacy", "office", "workdinner", "social"];
+const _SCENARIOS = ["introductions", "small_talk", "cafe", "restro", "shopping", "taxi", "CVS", "market", "directions", "pharmacy", "office", "workdinner", "social"];
 const CARDS = {};
 _SCENARIOS.forEach(sc => {
-  const base = (window.DECKS[_LANGS[0]] || {})[sc] || [];
+  const baseLang = _LANGS.find(l => (window.DECKS[l]?.[sc]?.length > 0)) || _LANGS[0];
+  const base = (window.DECKS[baseLang] || {})[sc] || [];
   CARDS[sc] = base.map((card, idx) => {
-    const answers = {};
+    const answers = {}, translations = {};
     _LANGS.forEach(lang => {
-      answers[lang] = ((window.DECKS[lang] || {})[sc] || [])[idx]?.answers || [];
+      const lc = ((window.DECKS[lang] || {})[sc] || [])[idx];
+      answers[lang] = lc?.answers || [];
+      if (lc?.translations) translations[lang] = lc.translations;
     });
-    return { d: card.d, prompt: card.prompt, answers };
+    return { d: card.d, prompt: card.prompt, answers, translations };
   });
 });
 
@@ -278,8 +286,10 @@ function chooseLevel(lvl){
 function buildScenarioGrid(){
   const grid = document.getElementById('scenario-grid');
   grid.innerHTML = '';
-  SCENARIOS_META.forEach(({key,name,icon})=>{
+  SCENARIOS_META.forEach(({key,name,icon,minLevel})=>{
+    if(S.level < (minLevel||1)) return;
     const cards = getFilteredCards(key);
+    if(!cards.length) return;
     const btn = document.createElement('button');
     btn.className = 'scenario-btn';
     btn.innerHTML = `<span class="sc-icon">${icon}</span><span class="sc-name">${name}</span><span class="sc-count">${cards.length} cards</span>`;
@@ -354,12 +364,14 @@ function renderCard(){
 function revealAnswers(){
   const card = S.deck[S.idx];
   const answers = card.answers[S.lang] || [];
+  const trans   = (card.translations && card.translations[S.lang]) || [];
   const aa = document.getElementById('answers-area');
   aa.innerHTML = '';
   answers.forEach((ans,i)=>{
     const div = document.createElement('div');
     div.className = 'answer-card'+(i===0?' primary':'');
-    div.innerHTML = `<div class="answer-label">${i===0?'Main response':'Alternative '+i}</div><div class="answer-text">${ans}</div>`;
+    const tr = trans[i] ? `<div class="answer-translation">${trans[i]}</div>` : '';
+    div.innerHTML = `<div class="answer-label">${i===0?'Main response':'Alternative '+i}</div><div class="answer-text">${ans}</div>${tr}`;
     aa.appendChild(div);
   });
   aa.style.display = 'flex';
